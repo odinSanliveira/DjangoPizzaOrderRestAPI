@@ -31,6 +31,8 @@ INSTALLED_APPS = [
 
     'authentication.apps.AuthenticationConfig',
     'orders.apps.OrdersConfig',
+    
+    'rest_framework',
 
 ]
 
