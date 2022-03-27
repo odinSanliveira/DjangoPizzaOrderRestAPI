@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     
     'rest_framework',
     'djoser',
+    'drf_yasg',
 
 ]
 AUTH_USER_MODEL = 'authentication.User'
@@ -53,6 +54,17 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'BLACKLIST_AFTER_ROTATION': False,
 }
+
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+      'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+      }
+   }
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
