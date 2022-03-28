@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'authentication.User'
 
 REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 5,
     'NON_FIELD_ERRORS_KEY': 'errors',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',

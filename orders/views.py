@@ -6,7 +6,8 @@ from . import serializers
 from . models import Order
 
 from django.contrib.auth import get_user_model
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser, AllowAny
+from rest_framework.pagination import PageNumberPagination
 
 User = get_user_model()
 
@@ -17,17 +18,18 @@ class HelloOrderView(generics.GenericAPIView):
 # json of orders
 class OrderCreateListView(generics.GenericAPIView):
     
+    permission_classes = [IsAuthenticatedOrReadOnly, AllowAny]
+
+    
     serializer_class = serializers.OrderCreationSerializer
     queryset = Order.objects.all()
 
-    permission_classes = [IsAuthenticatedOrReadOnly]
-
     def get(self, request):
-        
-        orders=Order.objects.all()
-        serializer=self.serializer_class(instance=orders, many=True)
-
-        return Response(data=serializer.data, status= status.HTTP_200_OK)
+        paginator = PageNumberPagination()
+        query_set = Order.objects.all()
+        context = paginator.paginate_queryset(query_set, request)
+        serializer = self.serializer_class(context, many=True)
+        return paginator.get_paginated_response(serializer.data)
 
     def post(self, request):
         data = request.data
