@@ -39,3 +39,11 @@ class UserCreationSerializer(serializers.ModelSerializer):
 
         user.save()
         return user
+
+class UsernameUpdateSerializer(serializers.ModelSerializer):
+    username = models.CharField(max_length=25, unique=True)
+
+    class Meta:
+        model = User 
+        fields = ['username']
+

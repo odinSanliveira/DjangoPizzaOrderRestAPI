@@ -43,6 +43,7 @@ class CustomUserManager(BaseUserManager):
 class User(AbstractUser):
     username = models.CharField(max_length=25, unique=True)
     email = models.EmailField(max_length=80, unique=True)
+    is_verified = models.BooleanField(default=False)
     image = models.ImageField(upload_to='static/media/profiles/', blank=True, null=True)
 
     
