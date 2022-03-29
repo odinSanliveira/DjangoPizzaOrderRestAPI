@@ -5,7 +5,7 @@ from .models import Order
 
 @admin.register(Order)
 class OrderAAdmin(admin.ModelAdmin):
-    list_display=['id','size', 'order_status', 'quantity', 'created_at', 'customer']
+    list_display=['id','size', 'flavour', 'order_status', 'quantity', 'created_at', 'customer']
     list_filter=['created_at', 'order_status', 'size', 'customer']
 
 

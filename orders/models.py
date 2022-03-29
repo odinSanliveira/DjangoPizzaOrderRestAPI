@@ -15,12 +15,20 @@ class Order(models.Model):
         ('IN_TRANSIT', 'inTransit'),
         ('DELIVERED', 'delivered'),
         )
-        
+    
+    FLAVOURS= (
+        ('FOUR_CHEESE', 'fourCheese'),
+        ('MUSHROOMS', 'mushrooms'),
+        ('PEPPER_AND_ONIONS', 'peppers_and_onions'),
+        ('CHICKEN_CUTLET', 'ChickenCutlet'),
+        ('ITALIAN_SAUSAGE', 'ItalianSausage'),
+        ('PEPPERONI', 'Pepperoni'),
+    )
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
-    size = models.CharField(max_length=20, choices=SIZES,default=SIZES[0][0])
-    flavour=models.CharField(max_length=40, default="")
+    size = models.CharField(max_length=20, choices=SIZES)
+    flavour=models.CharField(max_length=40,choices=FLAVOURS)
     order_status = models.CharField(max_length=20, choices=ORDER_STATUS, default=ORDER_STATUS[0][0])
-    quantity = models.IntegerField(default=1)
+    quantity = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     update_at=models.DateTimeField(auto_now=True)
 

@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'djoser',
     'drf_yasg',
-
+    'django_seed'
 ]
 AUTH_USER_MODEL = 'authentication.User'
 
