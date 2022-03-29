@@ -18,6 +18,7 @@ class Order(models.Model):
         
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     size = models.CharField(max_length=20, choices=SIZES,default=SIZES[0][0])
+    flavour=models.CharField(max_length=40, default="")
     order_status = models.CharField(max_length=20, choices=ORDER_STATUS, default=ORDER_STATUS[0][0])
     quantity = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
