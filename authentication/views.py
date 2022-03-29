@@ -45,7 +45,7 @@ class UserCreateView(generics.GenericAPIView):
         
         return Response(data=serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
-class verifyEmail(generics.GenericAPIView):
+class VerifyEmail(generics.GenericAPIView):
     def get(self, request):
         token = request.GET.get('token')
         try:
@@ -63,7 +63,7 @@ class verifyEmail(generics.GenericAPIView):
             return Response({'error': 'Invalid Token'}, status= status.HTTP_400_BAD_REQUEST)
 
 
-class updateUsername(generics.GenericAPIView):
+class UpdateUsername(generics.GenericAPIView):
     serializer_class= serializers.UsernameUpdateSerializer
     permission_classes = [IsAuthenticated]
     def put(self, request, user_id):
@@ -76,3 +76,13 @@ class updateUsername(generics.GenericAPIView):
             return Response(data=serializer.data, status=status.HTTP_200_OK)
         
         return Response(data=serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
+class LoginView(generics.GenericAPIView):
+
+    serializer_class = serializers.LoginSerializer
+    
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+        

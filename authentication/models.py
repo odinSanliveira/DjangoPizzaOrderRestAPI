@@ -3,6 +3,7 @@ from enum import unique
 from lib2to3.pytree import Base
 
 from django.db import models
+from rest_framework_simplejwt.tokens import RefreshToken
 
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
@@ -55,3 +56,10 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"<User: {self.email} - {self.username}>"
+
+    def tokens(self):
+        refresh = RefreshToken.for_user(self)
+        return {
+            'refresh': str(refresh),
+            'access': str(refresh.access_token)
+        }
