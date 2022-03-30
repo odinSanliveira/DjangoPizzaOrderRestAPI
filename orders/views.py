@@ -93,7 +93,7 @@ class UpdateOrderStatus(generics.GenericAPIView):
 
 class UserOrdersView(generics.GenericAPIView):
     serializer_class = serializers.OrderDetailSerializer
-    [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     def get(self,request,user_id):
         user=User.objects.get(pk=user_id)
 
@@ -106,7 +106,7 @@ class UserOrdersView(generics.GenericAPIView):
 
 class UserOrderDetailView(generics.GenericAPIView):
     serializer_class=serializers.OrderDetailSerializer
-    [IsAdminUser]
+    permission_classes = [IsAdminUser]
     def get(self,request,user_id,order_id):
         user=User.objects.get(pk=user_id)
         order=Order.objects.all().filter(customer=user).get(pk=order_id)
