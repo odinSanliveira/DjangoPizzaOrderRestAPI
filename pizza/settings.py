@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     
     'rest_framework',
     'drf_yasg',
+    'djoser',
     'django_seed'
 ]
 AUTH_USER_MODEL = 'authentication.User'
@@ -118,25 +119,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER ='odincodetests@gmail.com'
 EMAIL_HOST_PASSWORD ='vvjolqvnolcvremy'
 EMAIL_USE_TLS = True
-
-
-DJOSER = {
-    'LOGIN_FIELD':'email',
-    'USER_CREATE_PASSWORD_RETYPE': True,
-    'USERNAME_CHANGED_EMAIL_CONFIRMATION': True,
-    'PASSWORD_CHANGED_EMAIL_CONFIRMATION': True,
-    'SET_USERNAME_RETYPE': True,
-    'SET_PASSWORD_RETYPE': True,
-    'USERNAME_RESET_CONFIRM_URL': 'email/reset/confirm/{uid}/{token}',
-    'PASSWORD_RESET_CONFIRM_URL': 'password/reset/confirm/{uid}/{token}',
-    'ACTIVATION_URL': 'activate/{uid}/{token}',
-    'SEND_ACTIVATION_EMAIL': True,
-    'SERIALIZERS':{
-        'user_create': 'authentication.serializers.UserCreationSerializer',
-        'user': 'authentication.serializers.UserCreationSerializer',
-    },
-
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
