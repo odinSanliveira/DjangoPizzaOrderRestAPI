@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     
     'rest_framework',
-    'djoser',
     'drf_yasg',
     'django_seed'
 ]
