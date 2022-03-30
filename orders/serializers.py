@@ -1,9 +1,15 @@
+from pyexpat import model
 from .models import Order
 from rest_framework import serializers
 
 
+class OrderList(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = '__all__'
+
 class OrderCreationSerializer(serializers.ModelSerializer):
-    order_status = serializers.HiddenField(default='PENDING')
+    order_status = serializers.HiddenField(default='pending')
     size = serializers.CharField(max_length=20)
     quantity = serializers.IntegerField(default=1)
     flavour=serializers.CharField(max_length=40)

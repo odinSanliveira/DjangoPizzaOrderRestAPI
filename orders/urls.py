@@ -3,7 +3,8 @@ from . import views
 
 urlpatterns = [
     
-     path('', views.OrderCreateListView.as_view(), name='orders'),
+    path('', views.OrderCreateListView.as_view(), name='orders'),
+    path('post/', views.PostOrderView.as_view(), name='orders_post'),
     path('<int:order_id>/', views.OrderDetailView.as_view(), name ='order_detail'),
     path('update-status/<int:order_id>/', views.UpdateOrderStatus.as_view(), name ='order_status_update'),
     path('user/<int:user_id>/orders/', views.UserOrdersView.as_view(), name ='user_orders_detail'),
