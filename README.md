@@ -20,6 +20,7 @@ Method | Funcionalidade | Rota | Access
 |---|---|---|---|
 |POST | Cadastrar novo usuário | /auth/signup | Todos|
 |POST | Login de usuário | /auth/login | Todos|
+|POST | cria tokens de acesso | auth/jwt/create/| Todo Usuário|
 |POST | _Refresh_ o token de acesso | auth/jwt/refresh/| Todo Usuário|
 |POST | Verifica a validade do token | /auth/jwt/verify/ | Todo Usuário|
 |POST | Realiza um pedido | /orders/post/ | Todo Usuário|
@@ -38,5 +39,17 @@ Method | Funcionalidade | Rota | Access
 * Ao cadastrar pelo `auth/signup` um email será enviado para a ativação do usuário pelo endpoint `/auth/email-verification/`, caso não seja ativado o login não poderá ser efetuado.
 * Se os usuário não for verificado ele não poderá ter acesso aos endpoints de verificação de Token.
 * Será necessário usar o _Bearer Token_ no header da aplicação, já que algumas requisições precisam de autenticação e outras a permissão de _superuser_.
-* Importante! o superuser deve está com o campo *is_verified* ativo, então acesse o endpoint `/admin` faça o login e ative esse campo.
+* **Importante!** o superuser deve está com o campo *is_verified* ativo, então acesse o endpoint `/admin` faça o login e ative esse campo.
 * O django-seed pode ser usado para preencher o banco de dados com o comando `python manage.py seed (api_name) --number=15`.
+
+
+# Requisições
+
+URL| Método | Campos | Respostas
+---|---|---|---
+/auth/signup | POST | email, password, username, image | 201_CREATED(email, username, image), 400_BAD_REQUEST
+/auth/login| POST| email, password | 200_OK(email, tokens), 400_BAD_REQUEST
+auth/jwt/create/ | POST | email, password | 200_OK(acess, refresh), 400_BAD_REQUEST
+auth/jwt/refresh/ | POST | refresh | 200_OK(acess token), 400_BAD_REQUEST
+auth/jwt/verify/ | POST | token | 200_OK, 400_BAD_REQUEST
+/orders/post/ | POST | size, quantity, flavour | 200_OK, 400_BAD_REQUEST
