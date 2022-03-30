@@ -6,6 +6,7 @@ A REST API for pizza delivery service built for fun and practice with django fra
 * Instale o [python](https://www.python.org/downloads/).
 * use o comando ```git clone https://github.com/odinSanliveira/DjangoPizzaOrderRestAPI``` em seu prompt de comando onde deseja baixar o repositório.
 * Entre na pasta raíz e use o comando. ```virtualenv <nome-do-ambiente-virtual>```
+* Ative seu ambiente virtual com `<nome-do-ambiente-virtual>\Scripts\activate` 
 ou com ```pipenv``` para criar um ambiente virtual e ative-o.
 * Instale os requisitos do ambiente com o comando: ```pip install -r requirements.txt```
 * cria sua base de dados ```python manage.py migrate```
@@ -36,7 +37,3 @@ Method | Funcionalidade | Rota | Access
 # Detalhes e funcionalidades
 * Ao cadastrar pelo `auth/signup` um email será enviado para a ativação do usuário pelo endpoint `/auth/email-verification/`, caso não seja ativado o login não poderá ser efetuado.
 * O django-seed pode ser usado para preencher o banco de dados com o comando `python manage.py seed (api_name) --number=15`.
-
-
-
-# Dificuldades encontradas
