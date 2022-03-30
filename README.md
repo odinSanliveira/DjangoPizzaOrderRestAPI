@@ -22,7 +22,7 @@ Method | Funcionalidade | Rota | Access
 |POST | Login de usuário | /auth/login | Todos|
 |POST | _Refresh_ o token de acesso | auth/jwt/refresh/| Todo Usuário|
 |POST | Verifica a validade do token | /auth/jwt/verify/ | Todo Usuário|
-|POST | Realiza um pedido | /orders/ | Todo Usuário|
+|POST | Realiza um pedido | /orders/post/ | Todo Usuário|
 |GET  | retorna todos os pedidos | /orders/ | todos|
 |GET  | retorna detalhes de pedido | /orders/{order_id} | super user|
 |GET  | retorna detalhes de pedido de um usuário | /orders/user/{user_id}/order/{order_id}/ | todos|
