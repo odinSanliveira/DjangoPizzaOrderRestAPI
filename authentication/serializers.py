@@ -1,6 +1,3 @@
-from asyncio.windows_events import NULL
-from email.policy import default
-from multiprocessing import AuthenticationError
 from .models import User
 from rest_framework import serializers
 from rest_framework.exceptions import AuthenticationFailed
